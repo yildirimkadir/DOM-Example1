@@ -13,8 +13,33 @@ add1.addEventListener("click", function() {
     } else {
         ul.innerHTML += `<li>${input1.value}</li>`;
         input1.value = "";
-        
+        javascriptKontrol();
+    };
+});
+const javascriptKontrol = () => {
+    document.querySelectorAll("ul li").forEach((x) => {
+        const lowerSentence = x.textContent.toLowerCase();
+        if (lowerSentence === "javascript") {
+            x.setAttribute("class", "red");
+        };
+    });
+};
+
+delete1.addEventListener("click", () => {
+    ul.childElementCount > 0 ? ul.removeChild(ul.lastElementChild) : alert("There is nothing for delete");
+});
+input1.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+        add1.click();
+    } else if (e.code === "Delete") {
+        delete1.click();
     }
-})
+});
+
+window.onload = () => {
+    input1.focus();
+
+};
+
 
 
